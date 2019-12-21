@@ -56,6 +56,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Thread.associate = function(models) {
     // associations can be defined here
+    Thread.belongsTo(models.User)
+
+    Thread.hasMany(models.Reply)
+
+    Thread.belongsTo(models.Channel)
   };
   return Thread;
 };
