@@ -14,8 +14,7 @@ module.exports = {
       {
         id: uuid(),
         name: 'General',
-        slug: 'genp
-        l',
+        slug: 'genpl',
         createdAt:  new Date();
         upatedAt:  new Date();
       },{
