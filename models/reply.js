@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Thread = sequelize.define(
-    "Thread",
+  const Reply = sequelize.define(
+    "Reply",
     {
       id: {
         allowNull: false,
@@ -9,39 +9,22 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4
       },
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      slug: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
       content: {
         type: DataTypes.TEXT,
+        allowNull: false
+      },
+      threadId: {
+        type: DataTypes.UUID,
         allowNull: false
       },
       userId: {
         type: DataTypes.UUID,
         allowNull: false
       },
-      channelID: {
-        type: DataTypes.UUID,
-        allowNull: false
-      },
-      status: {
-        type: DataTypes.ENUM("UNSOLVED", "SOLVED"),
-        allowNull: false,
-        defaultValue: "UNSOLVED"
-      },
-      isLocked: {
+      isBestAnswer: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false
-      },
-      lastRepliedAt: {
-        type: DataTypes.DATE,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -54,8 +37,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Thread.associate = function(models) {
+  Reply.associate = function(models) {
     // associations can be defined here
   };
-  return Thread;
+  return Reply;
 };

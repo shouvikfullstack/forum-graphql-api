@@ -1,46 +1,29 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Threads", {
+    return queryInterface.createTable('Replies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      slug: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       content: {
         type: Sequelize.TEXT,
+        allowNull: false
+      },
+      threadId: {
+        type: Sequelize.UUID,
         allowNull: false
       },
       userId: {
         type: Sequelize.UUID,
         allowNull: false
       },
-      channelID: {
-        type: Sequelize.UUID,
-        allowNull: false
-      },
-      status: {
-        type: Sequelize.ENUM("UNSOLVED", "SOLVED"),
-        allowNull: false,
-        defaultValue: "UNSOLVED"
-      },
-      isLocked: {
+      isBestAnswer: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false
-      },
-      lastRepliedAt: {
-        type: Sequelize.DATE,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -53,6 +36,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Threads");
+    return queryInterface.dropTable('Replies');
   }
 };
